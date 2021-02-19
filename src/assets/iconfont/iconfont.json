@@ -1,0 +1,44 @@
+{
+  "id": "",
+  "name": "",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "51121110",
+      "name": "打开新标签",
+      "font_class": "tolink",
+      "unicode": "e630",
+      "unicode_decimal": 58928
+    },
+    {
+      "icon_id": "51127415",
+      "name": "编辑",
+      "font_class": "bianji",
+      "unicode": "e650",
+      "unicode_decimal": 58960
+    },
+    {
+      "icon_id": "51127418",
+      "name": "删除",
+      "font_class": "shanchu",
+      "unicode": "e653",
+      "unicode_decimal": 58963
+    },
+    {
+      "icon_id": "71097267",
+      "name": "close",
+      "font_class": "close",
+      "unicode": "e67b",
+      "unicode_decimal": 59003
+    },
+    {
+      "icon_id": "72197283",
+      "name": "加",
+      "font_class": "jia",
+      "unicode": "e693",
+      "unicode_decimal": 59027
+    }
+  ]
+}

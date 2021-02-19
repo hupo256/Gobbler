@@ -1,0 +1,640 @@
+#chrome_ext_root,
+#chrome_ext_container {
+  position: relative;
+  z-index: 9999;
+}
+.chrome-plugin-content {
+  font-size: 14px;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+}
+.chrome-plugin-hasEvents {
+  pointer-events: auto;
+}
+.chrome-plugin-hidden {
+  visibility: hidden;
+}
+.chrome-plugin-content p {
+  margin: 0;
+}
+.chrome-plugin-content ul {
+  padding-left: 0;
+}
+.chrome-plugin-content li {
+  list-style: none;
+}
+.chrome-plugin-content .fcgray {
+  color: #999;
+  font-size: 12px;
+}
+
+.chrome-plugin-popupbox {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background: rgba(0, 0, 0, 0.4);
+}
+.chrome-plugin-urlbox {
+  position: fixed;
+  padding: 30px 40px;
+  z-index: 999;
+  top: 40%;
+  left: 50%;
+  transform: translate3d(-50%, -50%, 0);
+  width: 680px;
+  height: 349px;
+  border: 1px solid #f9f9f9;
+  border-radius: 4px;
+  background: #fff;
+  box-shadow: 0 11px 12px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  color: #555;
+  pointer-events: auto;
+  box-sizing: border-box;
+}
+.chrome-plugin-urlbox p {
+  margin: 10px 0;
+  color: #999;
+}
+.chrome-plugin-urlbox h3 {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 30px;
+  margin-top: 0;
+  color: rgba(0, 0, 0, 0.85);
+  font-family: PingFangSC-Medium, PingFang SC;
+}
+.chrome-plugin-urlbox .f12 {
+  font-size: 12px;
+  margin-top: 15px;
+  color: rgba(0, 0, 0, 0.45);
+}
+.chrome-plugin-urlbox .sliderbox {
+  padding-left: 0;
+  margin-bottom: 0;
+  display: flex;
+  align-items: center;
+}
+.chrome-plugin-urlbox .sliderbox > li {
+  list-style: none;
+  width: 40%;
+  margin-right: 4%;
+  color: #999;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.chrome-plugin-urlbox .sliderbox > li input[type='range'] {
+  width: calc(100% - 3em);
+  /* -webkit-appearance: none; */
+  margin-top: 4px;
+  background-color: rgba(0, 0, 0, 0.1);
+  height: 6px;
+  border-radius: 2px;
+  padding: 0;
+  border: none;
+}
+.chrome-plugin-urlbox .sliderbox > li input[type='range']::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  /* top: 0;
+  height: 14px;
+  width: 14px;
+  transform: translateY(0px);
+  background: #fff;
+  border-radius: 7px;
+  border: 2px solid #2f54eb;
+  cursor: pointer; */
+
+  height: 50px;
+  width: 50px;
+  background: #ccc;
+  border-radius: 50%;
+  border: 2px solid #ccc;
+}
+.chrome-plugin-urlbox .sliderbox > li input[type='range']::-ms-fill-lower {
+}
+.chrome-plugin-urlbox .sliderbox > li input[type='range']::-webkit-fill-upper {
+}
+.chrome-plugin-urlbox .urlText {
+  padding: 20px 0;
+  font-size: 16px;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.85);
+  font-family: PingFangSC-Medium, PingFang SC;
+}
+.chrome-plugin-urlbox .urlText,
+.chrome-plugin-urlbox .sliderbox > li b {
+  color: #333;
+}
+
+/* 错误信息提示 */
+.chrome-plugin-urlbox .errorMsg {
+  color: rgba(0, 0, 0, 0.65);
+  line-height: 38px;
+  padding-left: 3.2em;
+  height: 38px;
+  background: #fff1f0;
+  border-radius: 2px;
+  border: 1px solid #ffa39e;
+  position: absolute;
+  width: 80%;
+  top: 58px;
+  opacity: 0;
+  transition: all ease 0.4s;
+}
+.chrome-plugin-urlbox .errorMsg::before {
+  content: 'X';
+  position: absolute;
+  left: 2em;
+  top: 11px;
+  background: red;
+  color: #fff;
+  width: 16px;
+  height: 16px;
+  border-radius: 8px;
+  line-height: 1.4;
+  font-size: 10px;
+  text-align: center;
+}
+.chrome-plugin-urlbox .fadein {
+  opacity: 1;
+}
+
+/* collingBox */
+.chrome-plugin-collingBox {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  color: #fff;
+}
+.chrome-plugin-collingBox > p {
+  font-size: 16px;
+  padding: 1.5em 4em;
+  background: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%, -80%, 0);
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+}
+.chrome-plugin-collingBox > p span {
+  padding-left: 5px;
+}
+
+.chrome-plugin-markBox {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 200px;
+  box-shadow: -2px 1px 4px rgba(0, 0, 0, 0.4);
+  background: #fff;
+}
+.numBox {
+  border: 1px solid #aaa;
+  padding: 10px;
+}
+.numBox > h3 {
+  font-weight: 800;
+  font-size: 18px;
+  margin: 5px 0;
+  text-align: left;
+}
+.numBox > p {
+  background: #ddd;
+  height: 7px;
+}
+.numBox > p span {
+  display: block;
+  background: #16c;
+  height: 100%;
+}
+.operation {
+  padding: 7px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  pointer-events: auto;
+}
+.operation > span {
+  cursor: pointer;
+}
+.chrome-plugin-removeMarkBox button,
+.operation button {
+  border: none;
+  padding: 4px 15px;
+  background: #16c;
+  border-radius: 3px;
+  color: #fff;
+  cursor: pointer;
+}
+.operation i {
+  font-style: normal;
+  color: #999;
+}
+.chrome-plugin-removeMarkBox {
+  display: flex;
+  pointer-events: auto;
+  justify-content: space-between;
+}
+.chrome-plugin-removeMarkBox .removeMarkTag {
+  background: rgb(212, 73, 8);
+  color: #222;
+  padding: 5px 15px;
+}
+.chrome-plugin-removeMarkBox button {
+  margin: 7px 7px 0 0;
+}
+.chrome-plugin-markTipsBox {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+.chrome-plugin-markTipsBox > div {
+  min-width: 500px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%, -80%, 0);
+  padding: 1rem;
+  background: #fff;
+  border-radius: 5px;
+  text-align: left;
+  color: #999;
+  pointer-events: auto;
+}
+.chrome-plugin-markTipsBox h3 {
+  font-size: 16px;
+  font-weight: 400;
+  margin: 0 0 1em 0;
+  color: #333;
+}
+.chrome-plugin-markTipsBox .pt1em {
+  padding: 1em 0;
+}
+
+.chrome-plugin-popuplayerBox {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background: rgba(0, 0, 0, 0.85);
+  color: #fff;
+  text-align: center;
+  padding: 10px 15px;
+  pointer-events: auto;
+}
+.chrome-plugin-popuplayerBox p {
+  padding-top: 15px;
+  display: flex;
+  align-items: center;
+}
+.chrome-plugin-popuplayerBox p span,
+.chrome-plugin-popuplayerBox p button {
+  cursor: pointer;
+  width: 50%;
+  color: #999;
+}
+.chrome-plugin-popuplayerBox p button {
+  background: #16c;
+  padding: 0;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  line-height: 2.4;
+  font-size: 14px;
+}
+
+/* exclusionBox */
+.chrome-plugin-exclusionBox {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 306px;
+  height: 400px;
+  box-shadow: 0 11px 12px rgba(0, 0, 0, 0.1);
+  background: #fff;
+  pointer-events: auto;
+  box-sizing: border-box;
+  padding: 0 20px;
+  overflow: hidden;
+}
+.chrome-plugin-exclusionBox[draggable] {
+  cursor: move;
+}
+.chrome-plugin-exclusionBox h3 {
+  font-size: 16px;
+  color: rgba(0, 0, 0, 0.85);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0;
+  padding: 1em 0 1.5em;
+}
+
+.chrome-plugin-exclusionBox span img {
+  width: 24px;
+  height: 24px;
+  margin: 0 5px;
+  padding: 4px;
+  vertical-align: middle;
+  opacity: 0.5;
+  cursor: pointer;
+  box-sizing: border-box;
+  background: none;
+}
+.chrome-plugin-exclusionBox span img:hover {
+  background: rgba(47, 84, 235, 0.08);
+}
+.chrome-plugin-exclusionBox h3 button {
+  font-size: 13px;
+  border: none;
+  background: #16c;
+  color: #fff;
+  border-radius: 3px;
+  padding: 2px 1em;
+}
+.chrome-plugin-exclusionBox p {
+  word-break: break-all;
+  color: rgba(0, 0, 0, 0.85);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+}
+.chrome-plugin-exclusionBox li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1em;
+}
+.chrome-plugin-exclusionBox li p span {
+  color: rgba(0, 0, 0, 0.65);
+}
+.chrome-plugin-exclusionBox li p span:nth-child(1) {
+  width: 7%;
+}
+.chrome-plugin-exclusionBox li p span:nth-child(2) {
+  width: 70%;
+}
+.chrome-plugin-exclusionBox li p span:nth-child(2) i {
+  font-style: normal;
+  color: rgba(47, 84, 235, 1);
+  font-size: 12px;
+  background: rgba(47, 84, 235, 0.1);
+  display: inline-block;
+  margin-right: 5px;
+}
+.chrome-plugin-exclusionBox li p span:nth-child(3) {
+  margin-top: 0;
+  width: 32px;
+}
+.chrome-plugin-exclusionBox .listTit {
+  padding-top: 1.8em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.chrome-plugin-exclusionBox .listbox {
+  height: 160px;
+  overflow: hidden;
+  overflow-y: auto;
+}
+.chrome-plugin-exclusionBox .listbox li {
+  margin-bottom: 0;
+  padding: 10px 0;
+}
+.chrome-plugin-exclusionBox .listbox li:hover {
+  background: rgba(47, 84, 235, 0.06);
+}
+.chrome-plugin-exclusionBox .hoverabled {
+  cursor: pointer;
+}
+.chrome-plugin-exclusionBox ul {
+  margin-top: 10px;
+}
+.chrome-plugin-urlbox .btnbox,
+.chrome-plugin-exclusionBox .btnbox,
+.chrome-plugin-exclusionBox .addRuleBox {
+  box-shadow: 0 0 14px rgba(19, 39, 89, 0.2);
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  padding: 20px 24px;
+  background: #fff;
+  width: 100%;
+  box-sizing: border-box;
+}
+.chrome-plugin-exclusionBox .toOut {
+  bottom: -7em;
+}
+.chrome-plugin-exclusionBox .addRuleBox span img {
+  width: 24px;
+  height: 24px;
+  margin-left: 10px;
+  margin-top: -2px;
+  margin-right: 0;
+  padding: 4px;
+  opacity: 0.5;
+  cursor: pointer;
+}
+.chrome-plugin-urlbox .btnbox,
+.chrome-plugin-exclusionBox .btnbox {
+  box-shadow: none;
+  width: 100%;
+  box-sizing: border-box;
+  text-align: right;
+}
+.chrome-plugin-urlbox .btnbox {
+  background: none;
+}
+.chrome-plugin-urlbox .btnbox button,
+.chrome-plugin-exclusionBox .btnbox button {
+  width: 52px;
+  height: 32px;
+  color: rgba(0, 0, 0, 0.5);
+  background: #fff;
+  border-radius: 4px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  margin-left: 5px;
+  font-size: 14px;
+  cursor: pointer;
+}
+.chrome-plugin-urlbox .btnbox button:nth-child(2),
+.chrome-plugin-exclusionBox .btnbox button:nth-child(2) {
+  background: #2f54eb;
+  color: #fff;
+}
+
+/* Checkbox */
+.chrome-plugin-exclusionBox .chrome-plugin-switch {
+  width: 32px;
+  height: 16px;
+  position: relative;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background-color: rgba(0, 0, 0, 0.25);
+  box-shadow: rgba(0, 0, 0, 0.25) 0 0 0 0 inset;
+  border-radius: 20px;
+  display: inline-block;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+  user-select: none;
+  cursor: pointer;
+  transition: all cubic-bezier(0, 0, 0, 1) 0.4s;
+}
+.chrome-plugin-exclusionBox .blockDom {
+  cursor: not-allowed;
+}
+.chrome-plugin-exclusionBox .chrome-plugin-switch:before {
+  content: '';
+  width: 14px;
+  height: 14px;
+  position: absolute;
+  top: 0px;
+  left: 0;
+  border-radius: 20px;
+  background-color: #fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+  transition: left 0.3s;
+}
+.chrome-plugin-exclusionBox .chrome-plugin-switch.checked {
+  border-color: rgba(47, 84, 235, 1);
+  box-shadow: rgba(47, 84, 235, 1) 0 0 0 16px inset;
+  background-color: rgba(47, 84, 235, 1);
+}
+.chrome-plugin-exclusionBox .chrome-plugin-switch.checked:before {
+  left: 16px;
+}
+.chrome-plugin-content .disableDom .chrome-plugin-switch {
+  opacity: 0.25;
+}
+
+/* toolTips */
+.chrome-plugin-content .chrome-plugin-toolTipsOut {
+  position: relative;
+  cursor: pointer;
+}
+.chrome-plugin-content .chrome-plugin-toolTipsOut u {
+  text-decoration: none;
+  position: absolute;
+  background: rgba(0, 0, 0, 0.85);
+  border-radius: 2px;
+  box-shadow: 0 11px 12px rgba(0, 0, 0, 0.16);
+  color: #fff;
+  line-height: 1;
+  padding: 7px;
+  font-size: 14px;
+  white-space: nowrap;
+  text-align: center;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -35px;
+  opacity: 0;
+  transition: all ease 0.2s 0.1s;
+}
+.chrome-plugin-content .chrome-plugin-toolTipsOut u.left,
+.chrome-plugin-content .chrome-plugin-toolTipsOut u.right {
+  bottom: -4px;
+}
+.chrome-plugin-content .chrome-plugin-toolTipsOut u::before {
+  content: ' ';
+  width: 6px;
+  height: 6px;
+  background: rgba(0, 0, 0, 0.75);
+  position: absolute;
+  left: 50%;
+  top: 25px;
+  transform: translateX(-50%) rotate(45deg);
+}
+.chrome-plugin-content .chrome-plugin-toolTipsOut u.bot::before {
+  top: -3px;
+}
+.chrome-plugin-content .chrome-plugin-toolTipsOut u.left::before {
+  right: -5px;
+  left: auto;
+  top: auto;
+  bottom: 10px;
+}
+.chrome-plugin-content .chrome-plugin-toolTipsOut u.right::before {
+  left: 0;
+  top: auto;
+  bottom: 10px;
+}
+.chrome-plugin-content .chrome-plugin-toolTipsOut:hover u {
+  opacity: 1;
+}
+.chrome-plugin-content .chrome-plugin-toolTipsOut u.left {
+  transform: translateX(-110%);
+}
+.chrome-plugin-content .chrome-plugin-toolTipsOut u.right {
+  transform: translateX(15%);
+}
+
+/* chrome-plugin-processer */
+.chrome-plugin-content .chrome-plugin-processer {
+  height: 4px;
+  width: 2px;
+  border-radius: 2px;
+  background: rgba(23, 219, 83, 1);
+  box-shadow: 0px 0px 7px 2px rgba(23, 219, 83, 0.6);
+  position: absolute;
+  left: 0;
+  bottom: 4px;
+  transition: all 1.2s ease 0.2s;
+}
+.chrome-plugin-content .chrome-plugin-processer.processer-full {
+  width: 100%;
+}
+
+/* taget dom colors */
+.gobblerExclusionDom,
+.gobblerExclusionDom_show {
+  background: rgba(224, 32, 32, 0.4) !important;
+  cursor: pointer !important;
+}
+.gobblerInheritanceDom,
+.gobblerInheritanceDom_show {
+  background: rgba(250, 100, 0, 0.4) !important;
+  cursor: pointer !important;
+}
+.gobblerInheritanceDom:hover::after,
+.gobblerExclusionDom:hover::after {
+  content: 'X';
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  background: rgba(51, 51, 51, 1);
+  font-size: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 28px;
+  color: #fff;
+  text-align: center;
+  border-radius: 18px;
+  position: absolute;
+  box-sizing: border-box;
+  transform: translate3d(-8px, -8px, 0) scale(0.5, 0.5);
+  transform-origin: 0% 0%;
+}
+
+.gobblerIncludedList {
+  background: rgba(240, 234, 45, 0.4) !important;
+  cursor: pointer !important;
+}
+.gobblerExclusionList {
+  background: rgba(250, 100, 0, 0.6) !important;
+  cursor: pointer !important;
+}

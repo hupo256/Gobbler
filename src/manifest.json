@@ -1,0 +1,42 @@
+{
+	"manifest_version": 2,
+	"name": "Gobbler 网页数据提取工具 ",
+	"version": "1.0",
+	"description": "无感采集，轻松存储，所览即所得",
+	"author": "aven",
+	"permissions":[
+		"webRequest", 
+		"webRequestBlocking", 
+		"declarativeContent",
+		"tabs",
+		"storage", 
+		"http://*/*",
+		"https://*/*" 
+	],
+	"icons": {
+		"32": "assets/img/collectopen32px.png",
+		"48": "assets/img/collectopen32px.png",
+		"128": "assets/img/collectopen32px.png"
+	},
+	"background": {
+		"scripts": ["assets/background.js"]
+	},
+	"browser_action": {
+		"default_icon": "assets/img/collectclose32px.png",
+		"default_title": "Gobbler",
+		"default_popup": "popup.html"
+	},
+	"content_scripts": [{
+		"matches": ["<all_urls>"],
+		"js": ["js/content.js"],
+		"css": ["assets/content.css"],
+		"run_at": "document_start"
+	}],
+	"options_ui":{
+    	"page": "assets/options.html",
+		"chrome_style": true,
+		"open_in_tab": true
+	},
+	"web_accessible_resources": ["js/inject.js"],
+	"homepage_url": "https://www.baidu.com"
+}
