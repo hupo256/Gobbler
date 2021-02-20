@@ -98,7 +98,7 @@ function Home() {
         <div className="popupPage">
           {!isLogin && (
             <div className="defaultView">
-              <img src={tologin} alt="" />
+              <img src={tologin} alt="" onClick={bgApitest} />
               <p>尚未登录系统</p>
               <a onClick={() => gotoDatapollo()}>立即登录</a>
             </div>
