@@ -138,7 +138,7 @@ chrome.runtime.onMessage.addListener(async (request, sender, sendResponse) => {
   // 如果传token过来，则存到storage里
   if (tokenTag) {
     const { GAToken, GUToken } = tokenTag
-    if (GAToken) {
+    if (GAToken !== 'injection') {
       changeEntryIcon(2)
       chrome.storage.sync.set({ [gaToken]: GAToken, [guToken]: GUToken }, res => {})
     }

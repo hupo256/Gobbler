@@ -32,7 +32,7 @@ export default function RuleInfo() {
     if (!chrome.extension) {
       // const { hostname, pathname } = location
       const hostname = 'dev.meizhilab.com'
-      const pathname = '/portal/dashboard/panorama'
+      const pathname = '/portal/dashboard'
       seturlObj({ hostname, pathname })
       touchIDs(`${hostname}${pathname}`)
     } else {
@@ -58,7 +58,7 @@ export default function RuleInfo() {
     setuseRule(true)
     setcurRepoId(captureRepoId)
     setcurRuleId(captureRuleId)
-    seturlObj({ hostname: host, pathname: path })
+    seturlObj({ hostname: host, pathname: `/${path.join('/')}` })
   }
 
   function sendToContentPage(key) {

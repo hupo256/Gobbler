@@ -1,9 +1,3 @@
-// const bg = chrome.extension.getBackgroundPage()
-// const { optType, baseUrl } = bg.touchGobblerBGData()
-// const iUrl = baseUrl + optType
-// const iframe = document.getElementById('miframe')
-// iframe.src = iUrl
-
 const iframe = document.getElementById('miframe')
 iframe.onload = () => {
   var data = { url: location.href }

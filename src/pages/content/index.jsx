@@ -35,7 +35,7 @@ if (chrome && chrome.runtime) {
   const GUToken = localStorage.getItem(guToken)
   console.log('GAToken', GAToken)
   // if (GAToken) {
-  chrome.runtime.sendMessage({ tokenTag: { GAToken, GUToken } }, function(res) {
+  chrome.runtime.sendMessage({ tokenTag: { GAToken: GAToken || 'injection', GUToken } }, function(res) {
     console.log('成功给到toke')
   })
   // }
